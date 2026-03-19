@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HQMS - Static</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/homestyle.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Header -->
+      <header class="header">
+        <div class="headerContent">
+          <div class="logoSection">
+            <img class="logo" src="../src/assets/qentra-logo.png" alt="Qentra" />
+          </div>
+          <div class="datetimeSection">
+            <div id="datetime" class="datetime">Wednesday, October 25 | 9:40 PM</div>
+          </div>
+          <div class="staffLoginSection">
+            <button class="staffLoginBtn" type="button">
+              <img class="staffLoginIcon" src="../src/assets/icon-login.svg" alt="" aria-hidden="true" />
+              <span class="staffLoginText">Staff login</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="mainContainer">
+        <div class="contentWrapper">
+          <!-- Left Section - Active Queues -->
+          <section class="leftSection" aria-label="Active queues">
+            <div class="sectionHeader">
+              <h1 class="sectionTitle">Active Queues</h1>
+              <div class="opdPill">
+                <span class="opdText">OPD</span>
+              </div>
+            </div>
+
+            <div class="queueGrid">
+              <!-- General Medicine -->
+              <article class="queueCard">
+                <div class="cardHeader">
+                  <h2 class="cardTitle">General Medicine</h2>
+                  <img class="cardIcon" src="../src/assets/icon-group4.svg" alt="" aria-hidden="true" />
+                </div>
+                <p class="cardRoom">Room 101- Dr. Mehta</p>
+
+                <div class="nowServingCard">
+                  <span class="nowServingLabel">Now Serving</span>
+                  <span class="nowServingValue">GM-104</span>
+                </div>
+
+                <div class="cardMetrics">
+                  <div class="metricGroup">
+                    <span class="metricLabel">Next Token</span>
+                    <span class="nextTokenValue">GM-105</span>
+                  </div>
+                  <div class="metricGroup">
+                    <span class="metricLabel">Avg wait</span>
+                    <span class="avgWaitValue" style="color: #f1ad7d">12 mins</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Orthopedics -->
+              <article class="queueCard">
+                <div class="cardHeader">
+                  <h2 class="cardTitle">Orthopedics</h2>
+                  <img class="cardIcon" src="../src/assets/icon-group5.svg" alt="" aria-hidden="true" />
+                </div>
+                <p class="cardRoom">Room 102- Dr. shah</p>
+
+                <div class="nowServingCard">
+                  <span class="nowServingLabel">Now Serving</span>
+                  <span class="nowServingValue">OR-012</span>
+                </div>
+
+                <div class="cardMetrics">
+                  <div class="metricGroup">
+                    <span class="metricLabel">Next Token</span>
+                    <span class="nextTokenValue">OR-013</span>
+                  </div>
+                  <div class="metricGroup">
+                    <span class="metricLabel">Avg wait</span>
+                    <span class="avgWaitValue" style="color: #16beab">8 mins</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Pediatrics -->
+              <article class="queueCard">
+                <div class="cardHeader">
+                  <h2 class="cardTitle">Pediatrics</h2>
+                  <img class="cardIcon" src="../src/assets/icon-group4.svg" alt="" aria-hidden="true" />
+                </div>
+                <p class="cardRoom">Room 103- Dr. sarah</p>
+
+                <div class="nowServingCard">
+                  <span class="nowServingLabel">Now Serving</span>
+                  <span class="nowServingValue">PD-045</span>
+                </div>
+
+                <div class="cardMetrics">
+                  <div class="metricGroup">
+                    <span class="metricLabel">Next Token</span>
+                    <span class="nextTokenValue">PD-046</span>
+                  </div>
+                  <div class="metricGroup">
+                    <span class="metricLabel">Avg wait</span>
+                    <span class="avgWaitValue" style="color: #e71919">25 mins</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Right Section - Token Form / Token Card -->
+          <section class="rightSection" aria-label="Token issuing">
+            <!-- Token Form Container -->
+            <div id="token-form-container" class="tokenFormContainer">
+              <button class="generateTokenBtn" type="button">
+                <img class="addCircleIcon" src="../src/assets/icon-add-circle.svg" alt="" aria-hidden="true" />
+                <span>Generate new token</span>
+              </button>
+
+              <!-- Search Patient button styled same as Generate new token, with search icon -->
+              <button class="generateTokenBtn searchTokenBtn" type="button">
+                <img class="searchTokenIcon" src="../src/assets/icon-frame.svg" alt="" aria-hidden="true" />
+                <span>Search patient</span>
+              </button>
+
+              <div class="formCard" id="token-form-card">
+                <div id="token-form-view">
+                  <h2 class="formTitle">
+                    <img
+                      src="../src/assets/ticket-icon.svg"
+                      alt=""
+                      aria-hidden="true"
+                      class="formTitleIcon"
+                    />
+                    Issue New Token
+                  </h2>
+
+                  <div class="formGroup">
+                    <label class="formLabel" for="patient-name">Patient Name</label>
+                    <input
+                      id="patient-name"
+                      type="text"
+                      class="formInput"
+                      placeholder="Enter full name"
+                      required
+                    />
+                  </div>
+
+                  <div class="formGroup">
+                    <label class="formLabel" for="mobile-number">Mobile Number</label>
+                    <input
+                      id="mobile-number"
+                      type="tel"
+                      class="formInput"
+                      placeholder="+91 99999-99999"
+                      inputmode="numeric"
+                      minlength="10"
+                      maxlength="10"
+                      required
+                    />
+                  </div>
+
+                  <div class="formGroup">
+                    <label class="formLabel" for="department-select">Department</label>
+                    <div class="selectWrapper">
+                      <select id="department-select" class="formSelect" required>
+                        <option value="" disabled selected hidden>Select department</option>
+                        <option value="General Medicine">General Medicine</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                      </select>
+                      <img class="selectArrow" src="../src/assets/icon-arrow-dropdown-2.svg" alt="" aria-hidden="true" />
+                    </div>
+                  </div>
+
+                  <div class="formGroup">
+                    <label class="formLabel" for="doctor-select">Doctor</label>
+                    <div class="selectWrapper">
+                      <select id="doctor-select" class="formSelect" required>
+                        <option value="" disabled selected hidden>Select doctor</option>
+                        <option value="Dr.abc">Dr.abc</option>
+                        <option value="Dr. Mehta">Dr. Mehta</option>
+                        <option value="Dr. shah">Dr. shah</option>
+                        <option value="Dr. sarah">Dr. sarah</option>
+                      </select>
+                      <img class="selectArrow" src="../src/assets/icon-arrow-dropdown-1.svg" alt="" aria-hidden="true" />
+                    </div>
+                  </div>
+
+                  <button id="issue-token-btn" class="issueTokenBtn" type="button">Issue Token</button>
+
+                  <div id="form-error" class="formErrorMessage" aria-live="polite"></div>
+                </div>
+
+                <!-- Inline Token Issued view (replaces form after submit) -->
+                <div id="token-issued-view" hidden>
+                  <h2 class="formTitle">Token Issued</h2>
+                  <div id="inline-token-number" class="tokenNumber">GM-106</div>
+                  <div class="tokenDetails">
+                    <p class="tokenDetailItem">
+                      <span class="tokenDetailLabel">Department:</span>
+                      <span id="inline-token-department" class="tokenDetailValue">General Medicine</span>
+                    </p>
+                    <p class="tokenDetailItem">
+                      <span class="tokenDetailLabel">Doctor:</span>
+                      <span id="inline-token-doctor" class="tokenDetailValue">Dr.abc</span>
+                    </p>
+                  </div>
+                  <button id="inline-back-to-form-btn" class="backToFormBtn" type="button">
+                    Issue Another Token
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./js/homescript.js"></script>
+  </body>
+  </html>
+
+

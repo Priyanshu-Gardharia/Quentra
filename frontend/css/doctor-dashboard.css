@@ -1,0 +1,843 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  background: #F7FBFA;
+  overflow-x: hidden;
+}
+
+/* App Frame - Full screen */
+.app-frame {
+  width: 100vw;
+  min-height: 100vh;
+  background: #F7FBFA;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  min-height: 100vh;
+}
+
+/* Header - SaaS Style */
+.main-header {
+  width: 100%;
+  height: 72px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sidebar-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.quentra-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #1A1A1A;
+  letter-spacing: -0.5px;
+}
+
+.quentra-logo::first-letter {
+  font-size: 32px;
+}
+
+.date-time {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #4F4F4F;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.staff-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #EEEEEE;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.staff-login:hover {
+  background: #E0E0E0;
+}
+
+.staff-login svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.staff-login span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #4F4F4F;
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 72px);
+  flex-direction: row;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Left Sidebar - Professional SaaS Style */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: #EAF2F7;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.3s ease, width 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  opacity: 0;
+  border-right: none;
+  pointer-events: none;
+}
+
+.sidebar > *:first-child {
+  margin-top: 0;
+}
+
+.dashboard-header-section {
+  width: 100%;
+  padding: 32px 40px;
+  background: #F7FBFA;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.dashboard-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background: rgba(58, 142, 235, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dashboard-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+.dashboard-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1A1A1A;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+.dashboard-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #7B7B7B;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+}
+
+.doctor-profile-card {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  margin-top: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.doctor-icon-circle {
+  width: 48px;
+  height: 48px;
+  background: #3A8EEB;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doctor-icon-circle svg {
+  width: 36px;
+  height: 36px;
+}
+
+.doctor-info {
+  flex: 1;
+}
+
+.doctor-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #262626;
+  margin-bottom: 3px;
+}
+
+.doctor-role {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #7B7B7B;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+}
+
+.nav-section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #262626;
+  margin-bottom: 12px;
+  padding-bottom: 0;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  padding-left: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* SVG colors are now defined inline in HTML, no need to override */
+
+.nav-item span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #262626;
+}
+
+.nav-item.active {
+  background: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item.active span {
+  font-weight: 600;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: #3A8EEB;
+  border-radius: 2px 0 0 2px;
+}
+
+.nav-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.expand-icon {
+  margin-top: 8px;
+  padding-left: 12px;
+  cursor: pointer;
+  padding-bottom: 4px;
+}
+
+.expand-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.expand-icon svg path {
+  stroke: #7B7B7B;
+}
+
+.sidebar-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.appointments-summary {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-item {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #7B7B7B;
+  line-height: 1.5;
+  padding: 0;
+}
+
+/* Main Content Wrapper */
+.main-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: calc(100vh - 72px);
+  min-width: 0;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 0;
+  background: #F7FBFA;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* My OPD Queue Card */
+.opd-queue-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 32px;
+  margin: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.opd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.opd-header-left {
+  flex: 1;
+}
+
+.opd-title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.opd-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #1A1A1A;
+  margin: 0;
+  display: inline-block;
+}
+
+.consultation-details {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #7B7B7B;
+  display: flex;
+  align-items: center;
+}
+
+.opd-header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.availability-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(16, 185, 129, 0.12);
+  border-radius: 20px;
+}
+
+.availability-status svg {
+  flex-shrink: 0;
+}
+
+.availability-status span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #10B981;
+}
+
+.doctor-info-main {
+  text-align: right;
+}
+
+.doctor-name-main {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.doctor-specialty {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #7B7B7B;
+}
+
+.doctor-initials-circle {
+  width: 48px;
+  height: 48px;
+  background: #3A8EEB;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doctor-initials-circle span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* Metrics Row */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.metric-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.metric-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #262626;
+}
+
+.metric-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #262626;
+}
+
+/* Current Consultation Card */
+.current-consultation-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 24px 32px;
+  margin: 0 40px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.consultation-header {
+  margin-bottom: 8px;
+}
+
+.consultation-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #262626;
+  margin-bottom: 4px;
+}
+
+.consultation-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #7B7B7B;
+}
+
+.patient-info-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.patient-info-left {
+  flex: 1;
+}
+
+.patient-token-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.token-badge {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #262626;
+  padding: 4px 10px;
+  background: #D9D9D9;
+  border-radius: 6px;
+}
+
+.patient-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #262626;
+}
+
+.patient-details {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #7B7B7B;
+}
+
+.patient-info-right {
+  text-align: right;
+}
+
+.priority-badge-normal {
+  display: inline-block;
+  padding: 5px 12px;
+  background: #EEEEEE;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #262626;
+  margin-bottom: 6px;
+}
+
+.consultation-time {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #7B7B7B;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  background: #3A8EEB;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #2A7DD8;
+}
+
+.btn-primary svg rect {
+  fill: #FFFFFF;
+}
+
+.btn-primary svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #F3F4F6;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-secondary svg path {
+  stroke: #262626;
+}
+
+/* Patients In Queue Card */
+.patients-queue-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 24px 32px;
+  margin: 0 40px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.queue-card-header {
+  margin-bottom: 8px;
+}
+
+.queue-card-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #262626;
+  margin-bottom: 4px;
+}
+
+.queue-card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #7B7B7B;
+}
+
+.patients-table {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-header-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  padding: 14px 20px;
+  background: #F9F9F9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-header-cell {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #7B7B7B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.2s;
+}
+
+.table-row:hover {
+  background: #F9FAFB;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #262626;
+  display: flex;
+  align-items: center;
+}
+
+.token-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.token-code {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #262626;
+}
+
+.patient-name-cell {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #262626;
+}
+
+.priority-badge-urgent {
+  display: inline-block;
+  padding: 5px 12px;
+  background: #FF9D9D;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.queue-summary-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+}
+
+.footer-left,
+.footer-right {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  color: #7B7B7B;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1600px) {
+  .app-container {
+    max-width: 100%;
+  }
+}
