@@ -80,7 +80,7 @@ function App() {
               </svg>
               <span>Desk status</span>
             </div>
-          </nav>
+          </div>
 
           <div className="sidebar-divider"></div>
 
