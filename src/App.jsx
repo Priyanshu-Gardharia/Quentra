@@ -1,20 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import ReceptionDashboard from './pages/ReceptionDashboard';
-import StaffLogin from './pages/StaffLogin';
-import DoctorDashboard from './pages/DoctorDashboard';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import AdminDashboard from './pages/AdminDashboard';
-import HomePage from './pages/HomePage';
-import './App.css';
+import DoctorDashboard from './pages/DoctorDashboard';
+import Receptionist from './pages/Receptionist';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/reception" element={<ReceptionDashboard />} />
-        <Route path="/login" element={<StaffLogin />} />
-        <Route path="/doctor" element={<DoctorDashboard />} />
+        <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/doctor" element={<DoctorDashboard />} />
+        <Route path="/receptionist" element={<Receptionist />} />
       </Routes>
     </Router>
   );

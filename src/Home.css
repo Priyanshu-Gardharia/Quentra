@@ -1,0 +1,652 @@
+/* Global styles (from global.css) */
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f2fbf9;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Homepage.module.css converted to global classes */
+
+/* Page Container */
+.page {
+  min-height: 100vh;
+  background: #f2fbf9;
+  width: 100%;
+}
+
+/* Full-width Header */
+.header {
+  width: 100%;
+  background: #f2fbf9;
+  padding: 6px 0; /* slightly smaller header */
+}
+
+.headerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px; /* tighter so header feels smaller */
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  height: auto;
+  overflow: visible;
+}
+
+.logo {
+  height: 140px; /* keep logo prominent */
+  width: auto;
+  object-fit: contain;
+}
+
+.datetimeSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.datetime {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16px; /* slightly smaller so logo dominates */
+  font-weight: 400;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.staffLoginSection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.staffLoginBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px; /* smaller button footprint */
+  background: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.staffLoginBtn:hover {
+  background: #f5f5f5;
+}
+
+.staffLoginIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.staffLoginText {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+}
+
+/* Main Container */
+.mainContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Left Section - 70% */
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+}
+
+.opdPill {
+  background: #2D9CDB;
+  border-radius: 8px;
+  padding: 6px 20px;
+}
+
+.opdText {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Queue Grid */
+.queueGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.queueCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.queueCard:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  flex: 1;
+}
+
+.cardIcon {
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.cardRoom {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
+
+.cardMetrics {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;  /* space below Now Serving box */
+  margin-bottom: 4px;
+  padding-top: 4px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.metricGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metricLabel {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.nextTokenValue {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #020617;
+}
+
+.avgWaitValue {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.nowServingCard {
+  background: #EFF6FF;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.nowServingLabel {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.nowServingValue {
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #3B82F6;
+}
+
+/* Right Section */
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tokenFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.generateTokenBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: #e7f0ff; /* match Issue New Token card background */
+  color: #000000;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.generateTokenBtn:hover {
+  background: #d7e4ff;
+}
+
+.generateTokenBtn:active {
+  transform: translateY(1px);
+}
+
+.addCircleIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Extra spacing for Search token pill under Generate new token */
+.searchTokenBtn {
+  margin-top: 8px;
+  background: #ffffff;
+}
+
+.searchTokenIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.searchContainer {
+  width: 100%;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: #ffffff;
+  border-radius: 999px; /* pill shape like your screenshot */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+}
+
+.searchIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  color: #000000;
+}
+
+.searchInput::placeholder {
+  color: #111827;
+  opacity: 1;
+}
+
+.formCard {
+  background: #EBF2FF;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formTitle {
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 8px 0; /* space below heading */
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formTitleIcon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px; /* vertical space between each field group */
+}
+
+.formLabel {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+  background-color: #ffffff;
+}
+
+/* Fix browser autocomplete making fields look blue */
+input.formInput:-webkit-autofill,
+input.formInput:-webkit-autofill:hover,
+input.formInput:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: #0f172a;
+}
+
+/* Placeholder / blur look for selects when no value chosen */
+.formSelect {
+  color: #0f172a;
+}
+
+.formSelect:invalid {
+  color: #9ca3af; /* light gray like placeholder */
+}
+
+.formSelect option {
+  color: #0f172a; /* actual options in normal text color */
+}
+
+.formInput:focus,
+.formSelect:focus {
+  border-color: #1578f8;
+  box-shadow: 0 0 0 1px rgba(21, 120, 248, 0.2);
+}
+
+.inputError {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3);
+}
+
+.formErrorMessage {
+  margin-top: 4px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13px;
+  color: #b91c1c;
+  min-height: 18px;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectArrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+
+.issueTokenBtn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #2B419C; /* Dark blue from image */
+  color: #ffffff;
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.issueTokenBtn:hover {
+  background: #22358a;
+}
+
+.issueTokenBtn:active {
+  transform: translateY(1px);
+}
+
+/* Token Card */
+.tokenCardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.tokenCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 20px 16px 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tokenCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tokenCardTitle {
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.closeBtn {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: #f1f5f9;
+}
+
+.tokenCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tokenNumber {
+  font-family: Poppins, system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.tokenDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tokenDetailItem {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.tokenDetailLabel {
+  color: #64748b;
+}
+
+.tokenDetailValue {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.backToFormBtn {
+  margin-top: 4px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #2a41aa; /* same primary blue as Issue Token */
+  color: #ffffff;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.backToFormBtn:hover {
+  background: #22358a;
+}
+
+.backToFormBtn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .headerContent {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 12px;
+  }
+
+  .datetimeSection {
+    justify-content: flex-start;
+  }
+
+  .staffLoginSection {
+    justify-content: flex-start;
+  }
+
+  .contentWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .rightSection {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .headerContent {
+    padding: 0 16px;
+  }
+
+  .mainContainer {
+    padding: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+  }
+
+  .nowServingValue {
+    font-size: 20px;
+  }
+}
+
+
