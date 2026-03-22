@@ -1,14 +1,17 @@
-* {
-  margin: 0;
-  padding: 0;
+/* Scoped under .doctor-dashboard-page */
+.doctor-dashboard-page *,
+.doctor-dashboard-page *::before,
+.doctor-dashboard-page *::after {
   box-sizing: border-box;
 }
 
-body {
+.doctor-dashboard-page {
   font-family: 'Inter', sans-serif;
   color: #000000;
   background: #F7FBFA;
   overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* App Frame - Full screen */
@@ -100,15 +103,16 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #EEEEEE;
+  background: #FFFFFF;
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .staff-login:hover {
-  background: #E0E0E0;
+  background: #F5F5F5;
 }
 
 .staff-login svg {
@@ -134,11 +138,11 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Left Sidebar - Professional SaaS Style */
+/* Left Sidebar - Light Sky Blue */
 .sidebar {
   width: 260px;
   min-width: 260px;
-  background: #EAF2F7;
+  background: #E3F2FD;
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
@@ -166,40 +170,11 @@ body {
 .dashboard-header-section {
   width: 100%;
   padding: 32px 40px 24px;
-  background: #F7FBFA;
+  background: #F4F9F8;
   margin: 0;
   display: flex;
   align-items: flex-start;
   gap: 16px;
-}
-
-.dashboard-header-section .dashboard-title {
-  margin-bottom: 8px;
-}
-
-.dashboard-header-section .dashboard-subtitle {
-  margin-bottom: 0;
-  padding-bottom: 8px;
-  border-bottom: 3px solid #3A8EEB;
-  display: inline-block;
-  margin-top: 2px;
-}
-
-.dashboard-icon-wrapper {
-  width: 48px;
-  height: 48px;
-  background: rgba(58, 142, 235, 0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.dashboard-icon-wrapper svg {
-  width: 32px;
-  height: 32px;
 }
 
 .dashboard-title {
@@ -207,7 +182,7 @@ body {
   font-weight: 700;
   font-size: 22px;
   color: #1A1A1A;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.3;
   letter-spacing: -0.2px;
 }
@@ -219,6 +194,9 @@ body {
   color: #7B7B7B;
   line-height: 1.5;
   letter-spacing: 0.1px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #3A8EEB;
+  display: inline-block;
 }
 
 .doctor-profile-card {
@@ -238,7 +216,7 @@ body {
   width: 48px;
   height: 48px;
   background: #3A8EEB;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -279,9 +257,9 @@ body {
 
 .nav-section-title {
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #262626;
+  font-weight: 500;
+  font-size: 12px;
+  color: #7B7B7B;
   margin-bottom: 12px;
   padding-bottom: 0;
 }
@@ -308,15 +286,18 @@ body {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
-
-/* SVG colors are now defined inline in HTML, no need to override */
 
 .nav-item span {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 13px;
   color: #262626;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-item.active {
@@ -327,18 +308,26 @@ body {
 
 .nav-item.active span {
   font-weight: 600;
+  color: #1A1A1A;
+}
+
+.doctor-dashboard-page .nav-item.active svg path,
+.doctor-dashboard-page .nav-item.active svg rect,
+.doctor-dashboard-page .nav-item.active svg circle {
+  stroke: #3A8EEB;
+  fill: #3A8EEB;
 }
 
 .nav-item.active::after {
   content: '';
   position: absolute;
-  right: 0;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
   width: 4px;
   height: 60%;
   background: #3A8EEB;
-  border-radius: 2px 0 0 2px;
+  border-radius: 4px;
 }
 
 .nav-item:hover:not(.active) {
@@ -408,16 +397,13 @@ body {
   overflow-x: hidden;
 }
 
-/* My OPD Queue Card */
+/* Top Info Card - OPD Queue */
 .opd-queue-card {
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
-  padding: 32px;
+  padding: 28px 32px;
   margin: 24px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -459,15 +445,6 @@ body {
   flex-shrink: 0;
 }
 
-.opd-header-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  justify-content: flex-end;
-  min-width: 0;
-}
-
 .avg-consult-time {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -493,6 +470,15 @@ body {
   font-weight: 500;
   font-size: 13px;
   color: #4F4F4F;
+}
+
+.opd-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .doctor-info-main {
@@ -533,30 +519,42 @@ body {
   text-transform: uppercase;
 }
 
+/* Bottom Statistics Card */
+.stats-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  margin: 0 40px 24px 40px;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
 /* Metrics Row */
-.metrics-row {
+.stats-card .metrics-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.metric-card {
-  background: #FFFFFF;
+.stats-card .metric-card {
   padding: 20px 16px;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  background: #FFFFFF;
+}
+
+.stats-card .metric-card:last-child {
+  border-right: none;
+}
+
+.metric-card {
   text-align: left;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.metric-card:last-child {
-  border-right: none;
 }
 
 .metric-icon {
