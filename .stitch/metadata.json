@@ -1,0 +1,24 @@
+{
+  "name": "projects/11511548682460119150",
+  "projectId": "11511548682460119150",
+  "title": "Quentra - Hospital Queue Landing Page",
+  "visibility": "PRIVATE",
+  "projectType": "PROJECT_DESIGN",
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "LIGHT",
+    "font": "INTER",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#2B419C"
+  },
+  "screens": {
+    "landing": {
+      "id": "4d3b44d7b1b24ac793de01cba6041bd4",
+      "sourceScreen": "projects/11511548682460119150/screens/4d3b44d7b1b24ac793de01cba6041bd4",
+      "width": 2560,
+      "height": 5254
+    }
+  },
+  "designSystemAssetId": "b7a14afe42344fb0a618641360d89cab"
+}
