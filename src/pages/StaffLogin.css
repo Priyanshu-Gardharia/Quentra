@@ -1,0 +1,177 @@
+/* StaffLogin — clean SaaS style matching dashboards */
+.staff-login-page {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: var(--color-bg, #F7FBFA);
+}
+
+.staff-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  padding: 26px 24px;
+}
+
+.staff-login-brandRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.staff-login-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: #3A8EEB;
+  box-shadow: 0 10px 20px rgba(58, 142, 235, 0.18);
+}
+
+.staff-login-brandText {
+  font-family: var(--font-family-heading, Poppins, system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1A1A1A;
+}
+
+.staff-login-title {
+  font-family: var(--font-family-heading, Poppins, system-ui, sans-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0;
+}
+
+.staff-login-subtitle {
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 13px;
+  color: #7B7B7B;
+  margin: 6px 0 18px 0;
+  line-height: 1.5;
+}
+
+.staff-login-error {
+  margin: 0 0 12px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.06);
+  color: #b91c1c;
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 13px;
+}
+
+.staff-login-form {
+  display: grid;
+  gap: 12px;
+}
+
+.staff-login-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.staff-login-input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #F3F4F6;
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 14px;
+  color: #262626;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.staff-login-input:focus {
+  background: #ffffff;
+  border-color: rgba(58, 142, 235, 0.7);
+  box-shadow: 0 0 0 4px rgba(58, 142, 235, 0.12);
+}
+
+.staff-login-submit {
+  margin-top: 6px;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #3A8EEB;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.staff-login-submit:hover {
+  background: #2A7DD8;
+}
+
+.staff-login-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.staff-login-foot {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.staff-login-link {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 13px;
+  color: #3A8EEB;
+  text-decoration: underline;
+}
+
+.staff-login-link:hover {
+  color: #2A7DD8;
+}
+
+.staff-login-topActions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.staff-login-backLink {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-family-primary, Inter, system-ui, sans-serif);
+  font-size: 13px;
+  color: #3A8EEB;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+.staff-login-backLink:hover {
+  background: rgba(58, 142, 235, 0.08);
+}
+
+@media (max-width: 520px) {
+  .staff-login-card {
+    padding: 22px 16px;
+  }
+}
+

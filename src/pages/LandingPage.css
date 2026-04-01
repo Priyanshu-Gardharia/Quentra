@@ -6,11 +6,22 @@
 /* Page container */
 .landing-page {
   min-height: 100vh;
-  background: #f2fbf9;
+  background: #F7FBFA;
   width: 100%;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   color: #000000;
   overflow-x: hidden;
+}
+
+/* Keep header alignment consistent on landing */
+.landing-page .headerContent {
+  grid-template-columns: auto 1fr auto;
+}
+
+.landing-page .staffLoginSection {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 /* ----- HERO SECTION ----- */
@@ -33,7 +44,7 @@
   font-size: 48px;
   font-weight: 600;
   line-height: 1.15;
-  color: #0c2885;
+  color: #1A1A1A;
   margin: 0 0 20px 0;
 }
 
@@ -59,7 +70,7 @@
   justify-content: center;
   gap: 8px;
   padding: 14px 32px;
-  background: linear-gradient(135deg, #0c2885, #2b419c);
+  background: #3A8EEB;
   border: none;
   border-radius: 8px;
   font-family: Poppins, system-ui, sans-serif;
@@ -72,9 +83,9 @@
 }
 
 .landing-btn-primary:hover {
-  background: linear-gradient(135deg, #091f6b, #22358a);
+  background: #2A7DD8;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(43, 65, 156, 0.3);
+  box-shadow: 0 4px 12px rgba(58, 142, 235, 0.3);
 }
 
 .landing-btn-primary:active {
@@ -88,20 +99,20 @@
   gap: 8px;
   padding: 14px 32px;
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   font-family: Inter, system-ui, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #0c2885;
+  color: #262626;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .landing-btn-secondary:hover {
-  background: #ecf5f4;
-  border-color: #c5c5d4;
+  background: #F3F4F6;
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Hero visual - Token preview card */
@@ -117,10 +128,26 @@
   background: #ffffff;
   border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
   width: 100%;
   max-width: 360px;
   position: relative;
+  overflow: hidden;
+}
+
+.landing-token-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 10%, rgba(58, 142, 235, 0.12), transparent 45%),
+              radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.10), transparent 45%);
+  pointer-events: none;
+}
+
+.landing-token-preview > * {
+  position: relative;
+  z-index: 1;
 }
 
 .token-preview-header {
@@ -149,7 +176,7 @@
   font-family: Poppins, system-ui, sans-serif;
   font-size: 56px;
   font-weight: 700;
-  color: #2b419c;
+  color: #3A8EEB; /* keep original token blue */
   margin: 0 0 8px 0;
   line-height: 1;
 }
@@ -265,11 +292,11 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: #dde1ff;
+  background: #EAF2F7;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2b419c;
+  color: #3A8EEB;
   font-size: 24px;
   flex-shrink: 0;
 }
@@ -300,7 +327,7 @@
 }
 
 .landing-cta-card {
-  background: linear-gradient(135deg, #0c2885, #2b419c);
+  background: linear-gradient(135deg, #3A8EEB, #2A7DD8);
   border-radius: 16px;
   padding: 56px 40px;
 }
@@ -326,7 +353,7 @@
 
 .landing-cta .landing-btn-primary {
   background: #ffffff;
-  color: #2b419c;
+  color: #3A8EEB;
 }
 
 .landing-cta .landing-btn-primary:hover {
@@ -376,7 +403,7 @@
 }
 
 .landing-footer-link:hover {
-  color: #2b419c;
+  color: #3A8EEB;
 }
 
 /* ----- RESPONSIVE ----- */

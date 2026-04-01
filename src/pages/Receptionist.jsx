@@ -2,10 +2,49 @@ import React, { useState, useEffect } from 'react';
 import './Receptionist.css';
 
 const Receptionist = () => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [dateTime, setDateTime] = useState('');
-  const [activeVisitType, setActiveVisitType] = useState('');
+  const [activeVisitType, setActiveVisitType] = useState('new');
   const [activePriority, setActivePriority] = useState('normal');
+
+  const [formData, setFormData] = useState({
+    patientName: '',
+    mobileNumber: '',
+    department: '',
+    notes: ''
+  });
+  const [loading, setLoading] = useState(false);
+
+  const [queues, setQueues] = useState({ 
+    1: { total_waiting: 0, avg_wait_time: 0, current_serving_number: null },
+    2: { total_waiting: 0, avg_wait_time: 0, current_serving_number: null },
+    3: { total_waiting: 0, avg_wait_time: 0, current_serving_number: null }
+  });
+
+  const fetchQueues = async () => {
+    try {
+      const qs = { ...queues };
+      for (let dep_id of [1, 2, 3]) {
+        const res = await fetch(`http://localhost:5000/api/queue/status?dep_id=${dep_id}`);
+        if(res.ok) {
+           const data = await res.json();
+           if (data.success && data.summary) qs[dep_id] = data.summary;
+        }
+      }
+      setQueues(qs);
+    } catch (err) {
+      console.error('Failed to fetch queues', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchQueues();
+    const interval = setInterval(fetchQueues, 30000);
+    const totalWaiting = queues[1].total_waiting + queues[2].total_waiting + queues[3].total_waiting;
+  const avgWait = Math.round((queues[1].avg_wait_time + queues[2].avg_wait_time + queues[3].avg_wait_time) / 3) || 0;
+
+  return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const updateTime = () => {
@@ -23,19 +62,69 @@ const Receptionist = () => {
     };
     updateTime();
     const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
+    const totalWaiting = queues[1].total_waiting + queues[2].total_waiting + queues[3].total_waiting;
+  const avgWait = Math.round((queues[1].avg_wait_time + queues[2].avg_wait_time + queues[3].avg_wait_time) / 3) || 0;
+
+  return () => clearInterval(interval);
   }, []);
 
   const toggleSidebar = () => setSidebarCollapsed(prev => !prev);
 
-  const handleIssueToken = () => {
-    const name = document.getElementById('patientName')?.value;
-    if (!name) {
-      alert('Please enter patient name');
+    const handleIssueToken = async () => {
+    if (!formData.patientName || !formData.mobileNumber || !formData.department) {
+      alert("Please fill all required fields (Name, Mobile, Department)");
       return;
     }
-    alert(`Token issued for ${name}`);
+
+    setLoading(true);
+    try {
+      const patRes = await fetch('http://localhost:5000/api/patient/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          patient_name: formData.patientName, 
+          mobile_number: formData.mobileNumber 
+        })
+      });
+      const patData = await patRes.json();
+      
+      if (!patData.success) throw new Error(patData.message || "Failed to register patient");
+      const p_id = patData.data.p_id;
+
+      let dep_id = 1; 
+      if (formData.department === 'orthopedics') dep_id = 2;
+      if (formData.department === 'pediatrics') dep_id = 3;
+
+      const tokRes = await fetch('http://localhost:5000/api/tokens/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          p_id,
+          dep_id,
+          visit_type: activeVisitType, 
+          priority: activePriority
+        })
+      });
+      const tokData = await tokRes.json();
+
+      if (!tokData.success) throw new Error(tokData.message || "Failed to generate token");
+
+      alert(`Token issued successfully! Token No: ${tokData.data.token_no}`);
+      
+      setFormData({
+        patientName: '', mobileNumber: '', department: '', notes: ''
+      });
+      
+      fetchQueues();
+    } catch (err) {
+      alert("Error issuing token: " + err.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const totalWaiting = queues[1].total_waiting + queues[2].total_waiting + queues[3].total_waiting;
+  const avgWait = Math.round((queues[1].avg_wait_time + queues[2].avg_wait_time + queues[3].avg_wait_time) / 3) || 0;
 
   return (
     <div className="receptionist-page">
@@ -50,13 +139,6 @@ const Receptionist = () => {
           <div className="quentra-logo">QUENTRA</div>
         </div>
         <div className="date-time">{dateTime}</div>
-        <div className="staff-login">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 5L12 10L8 15" stroke="#4F4F4F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <rect x="3" y="4" width="14" height="12" rx="1" stroke="#4F4F4F" strokeWidth="1.5" fill="none"/>
-          </svg>
-          <span>Staff login</span>
-        </div>
       </header>
 
       {/* Main Container */}
@@ -256,7 +338,7 @@ const Receptionist = () => {
               <div className="form-row">
                 <div className="form-group full-width">
                   <label>Patient Name</label>
-                  <input type="text" id="patientName" placeholder="Enter full name"/>
+                  <input type="text" id="patientName" placeholder="Enter full name" value={formData.patientName} onChange={e => setFormData({...formData, patientName: e.target.value})}/>
                 </div>
               </div>
 
@@ -278,9 +360,9 @@ const Receptionist = () => {
                 <div className="form-group">
                   <label>Department</label>
                   <div className="select-wrapper">
-                    <select id="department">
+                    <select id="department" value={formData.department} onChange={e => setFormData({...formData, department: e.target.value})}>
                       <option value="" disabled hidden selected>Choose department</option>
-                      <option value="general-opd">General OPD</option>
+                      <option value="general-medicine">General Medicine</option>
                       <option value="pediatrics">Pediatrics</option>
                       <option value="orthopedics">Orthopedics</option>
                       <option value="emergency">Emergency</option>
@@ -329,7 +411,7 @@ const Receptionist = () => {
                     </svg>
                     Mobile Number
                   </label>
-                  <input type="tel" id="mobileNumber" placeholder="+91 99999-99999"/>
+                  <input type="tel" id="mobileNumber" placeholder="+91 99999-99999" value={formData.mobileNumber} onChange={e => setFormData({...formData, mobileNumber: e.target.value})}/>
                 </div>
               </div>
 
@@ -342,12 +424,12 @@ const Receptionist = () => {
                     </svg>
                     Additional notes
                   </label>
-                  <textarea id="notes" placeholder="Add any relevant notes or instructions"></textarea>
+                  <textarea id="notes" placeholder="Add any relevant notes or instructions" value={formData.notes} onChange={e => setFormData({...formData, notes: e.target.value})}></textarea>
                 </div>
               </div>
 
               <div className="form-actions">
-                <button className="issue-token-btn" id="issueTokenBtn" onClick={handleIssueToken}>
+                <button className="issue-token-btn" id="issueTokenBtn" onClick={handleIssueToken} disabled={loading}>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{marginRight:'8px'}}>
                     <rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                     <path d="M7 9H13M7 12H11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -371,12 +453,12 @@ const Receptionist = () => {
 
             <div className="summary-cards">
               <div className="summary-card">
-                <div className="summary-value">18</div>
+                <div className="summary-value">{totalWaiting}</div>
                 <div className="summary-label">Total waiting patients</div>
                 <div className="summary-subtitle">Across OPD desk</div>
               </div>
               <div className="summary-card">
-                <div className="summary-value">15 min</div>
+                <div className="summary-value">{avgWait} min</div>
                 <div className="summary-label">Average OPD wait</div>
                 <div className="summary-subtitle">Live estimate</div>
               </div>
@@ -396,22 +478,22 @@ const Receptionist = () => {
               </div>
               <div className="table-row highlighted">
                 <div className="table-cell">General OPD</div>
-                <div className="table-cell">P-16</div>
-                <div className="table-cell">5</div>
-                <div className="table-cell">35 min</div>
+                <div className="table-cell">{queues[1].current_serving_number ? `GM-${queues[1].current_serving_number}` : '-'}</div>
+                <div className="table-cell">{queues[1].total_waiting}</div>
+                <div className="table-cell">{queues[1].avg_wait_time} min</div>
                 <div className="table-row-line"></div>
               </div>
               <div className="table-row">
                 <div className="table-cell">Pediatrics</div>
-                <div className="table-cell">K-11</div>
-                <div className="table-cell">4</div>
-                <div className="table-cell">30 min</div>
+                <div className="table-cell">{queues[3].current_serving_number ? `PD-${queues[3].current_serving_number}` : '-'}</div>
+                <div className="table-cell">{queues[3].total_waiting}</div>
+                <div className="table-cell">{queues[3].avg_wait_time} min</div>
               </div>
               <div className="table-row">
                 <div className="table-cell">Orthopedics</div>
-                <div className="table-cell">G-33</div>
-                <div className="table-cell">8</div>
-                <div className="table-cell">45 min</div>
+                <div className="table-cell">{queues[2].current_serving_number ? `OR-${queues[2].current_serving_number}` : '-'}</div>
+                <div className="table-cell">{queues[2].total_waiting}</div>
+                <div className="table-cell">{queues[2].avg_wait_time} min</div>
               </div>
             </div>
           </div>

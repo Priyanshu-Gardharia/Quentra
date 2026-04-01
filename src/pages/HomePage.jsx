@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../frontend/css/homestyle.css'; // Use exactly their CSS
+import '../assets/css/homestyle.css'; // Use exactly their CSS
 
 function HomePage() {
   const navigate = useNavigate();

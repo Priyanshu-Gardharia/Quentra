@@ -70,12 +70,19 @@ const LandingPage = () => {
             <div className="datetime">{dateTime}</div>
           </div>
           <div className="staffLoginSection">
-            <button className="staffLoginBtn" type="button" onClick={() => navigate('/login')} style={{ borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+            <button className="staffLoginBtn" type="button" onClick={() => navigate('/queue')}>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
-                <path d="M8 5L12 10L8 15" stroke="#4F4F4F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <rect x="3" y="4" width="14" height="12" rx="1" stroke="#4F4F4F" strokeWidth="1.5" fill="none"/>
+                <rect x="3" y="5" width="14" height="10" rx="2" stroke="#4F4F4F" strokeWidth="1.5" fill="none" />
+                <path d="M6 9H14M6 12H11" stroke="#4F4F4F" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
-              <span className="staffLoginText">Staff Login</span>
+              <span className="staffLoginText">Queue</span>
+            </button>
+            <button className="staffLoginBtn" type="button" onClick={() => navigate('/login')}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
+                <path d="M8 5L12 10L8 15" stroke="#4F4F4F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x="3" y="4" width="14" height="12" rx="1" stroke="#4F4F4F" strokeWidth="1.5" fill="none" />
+              </svg>
+              <span className="staffLoginText">Staff login</span>
             </button>
           </div>
         </div>
@@ -167,6 +174,10 @@ const LandingPage = () => {
             <button className="landing-footer-link" onClick={() => scrollTo('about')}>About</button>
             <button className="landing-footer-link" onClick={() => scrollTo('features')}>Features</button>
             <button className="landing-footer-link" onClick={() => navigate('/queue')}>Queue</button>
+            <button className="landing-footer-link" onClick={() => navigate('/receptionist')}>Receptionist</button>
+            <button className="landing-footer-link" onClick={() => navigate('/doctor')}>Doctor</button>
+            <button className="landing-footer-link" onClick={() => navigate('/admin')}>Admin</button>
+            <button className="landing-footer-link" onClick={() => navigate('/login')}>Staff login</button>
           </nav>
         </div>
       </footer>

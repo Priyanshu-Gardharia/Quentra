@@ -1,43 +1,20 @@
-/* Global styles (from global.css) */
-:root {
-  color-scheme: light;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: #f2fbf9;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  color: #000000;
-  overflow-x: hidden;
-}
-
-* {
-  box-sizing: border-box;
-}
+/* Global styles removed to prevent bleeding into other pages */
 
 /* Homepage.module.css converted to global classes */
 
 /* Page Container */
 .page {
   min-height: 100vh;
-  background: #f2fbf9;
+  background: #F7FBFA;
   width: 100%;
 }
 
 /* Full-width Header */
 .header {
   width: 100%;
-  background: #f2fbf9;
+  background: #FFFFFF;
   padding: 6px 0; /* slightly smaller header */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .headerContent {
@@ -147,7 +124,7 @@ body {
 }
 
 .opdPill {
-  background: rgba(21, 120, 248, 0.65);
+  background: #EAF2F7;
   border-radius: 12px;
   padding: 8px 20px;
 }
@@ -156,7 +133,7 @@ body {
   font-family: Inter, system-ui, sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #ffffff;
+  color: #3A8EEB;
 }
 
 /* Queue Grid */
@@ -247,7 +224,7 @@ body {
 }
 
 .nowServingCard {
-  background: #eff3ff; /* light blue like Figma inner card */
+  background: #EAF2F7; /* match SaaS theme */
   border-radius: 16px;
   padding: 18px 20px;
   display: flex;
@@ -268,7 +245,7 @@ body {
   font-family: Inter, system-ui, sans-serif;
   font-size: 32px;
   font-weight: 600;
-  color: #5966fb; /* blue token number like in your screenshot */
+  color: #3A8EEB; /* SaaS blue */
 }
 
 /* Right Section */
@@ -293,7 +270,7 @@ body {
   border-radius: 999px;
   border: none;
   outline: none;
-  background: #e7f0ff; /* match Issue New Token card background */
+  background: #EAF2F7;
   color: #000000;
   font-family: Inter, system-ui, sans-serif;
   font-size: 18px;
@@ -361,7 +338,7 @@ body {
 }
 
 .formCard {
-  background: #e7f0ff; /* light blue like Figma card */
+  background: #EAF2F7;
   border-radius: 12px;
   padding: 24px 24px 20px 24px;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -480,7 +457,7 @@ input.formInput:-webkit-autofill:focus {
   border-radius: 8px;
   border: none;
   outline: none;
-  background: #2a41aa; /* Figma primary blue for Issue Token */
+  background: #3A8EEB;
   color: #ffffff;
   font-family: Inter, system-ui, sans-serif;
   font-size: 15px;
@@ -490,7 +467,7 @@ input.formInput:-webkit-autofill:focus {
 }
 
 .issueTokenBtn:hover {
-  background: #22358a;
+  background: #2A7DD8;
 }
 
 .issueTokenBtn:active {
@@ -584,7 +561,7 @@ input.formInput:-webkit-autofill:focus {
   border-radius: 8px;
   border: none;
   outline: none;
-  background: #2a41aa; /* same primary blue as Issue Token */
+  background: #3A8EEB;
   color: #ffffff;
   font-family: Inter, system-ui, sans-serif;
   font-size: 15px;
@@ -594,7 +571,7 @@ input.formInput:-webkit-autofill:focus {
 }
 
 .backToFormBtn:hover {
-  background: #22358a;
+  background: #2A7DD8;
 }
 
 .backToFormBtn:active {
@@ -649,5 +626,3 @@ input.formInput:-webkit-autofill:focus {
     font-size: 20px;
   }
 }
-
-

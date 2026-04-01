@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css'; // Utilizing existing CSS globals
+import './StaffLogin.css';
 
 const StaffLogin = () => {
   const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ const StaffLogin = () => {
       } else if (data.user.role.toLowerCase() === 'admin') {
         navigate('/admin');
       } else {
-        navigate('/reception'); // default
+        navigate('/receptionist'); // default
       }
 
     } catch (err) {
@@ -48,51 +48,62 @@ const StaffLogin = () => {
   };
 
   return (
-    <div className="app" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: '#f0f4f8' }}>
-      <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', width: '360px' }}>
-        <h2 style={{ marginBottom: '20px', textAlign: 'center', fontFamily: 'var(--font-family-primary)', color: 'var(--color-text-primary)' }}>
-          Staff Login
-        </h2>
-        {error && <div style={{ color: 'red', marginBottom: '15px', textAlign: 'center', fontSize: '14px' }}>{error}</div>}
-        
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label style={{ display: 'block', marginBottom: '8px', color: 'var(--color-text-secondary)', fontSize: '14px' }}>Email</label>
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
+    <div className="staff-login-page">
+      <div className="staff-login-card" aria-label="Staff login">
+        <div className="staff-login-brandRow">
+          <div className="staff-login-mark" aria-hidden="true" />
+          <div className="staff-login-brandText">QUENTRA</div>
+        </div>
+
+        <h1 className="staff-login-title">Staff login</h1>
+        <p className="staff-login-subtitle">Sign in to access Admin, Doctor, or Reception dashboards.</p>
+
+        <div className="staff-login-topActions">
+          <button className="staff-login-backLink" type="button" onClick={() => navigate('/')}>
+            Back to home
+          </button>
+        </div>
+
+        {error && <div className="staff-login-error" role="alert">{error}</div>}
+
+        <form className="staff-login-form" onSubmit={handleLogin}>
+          <div className="staff-login-field">
+            <label htmlFor="staffEmail">Email</label>
+            <input
+              id="staffEmail"
+              className="staff-login-input"
+              type="email"
+              placeholder="name@hospital.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{ width: '100%', padding: '10px', marginBottom: '16px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
+              autoComplete="email"
             />
           </div>
-          <div className="form-group">
-            <label style={{ display: 'block', marginBottom: '8px', color: 'var(--color-text-secondary)', fontSize: '14px' }}>Password</label>
-            <input 
-              type="password" 
-              placeholder="Enter your password" 
+
+          <div className="staff-login-field">
+            <label htmlFor="staffPassword">Password</label>
+            <input
+              id="staffPassword"
+              className="staff-login-input"
+              type="password"
+              placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{ width: '100%', padding: '10px', marginBottom: '24px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
+              autoComplete="current-password"
             />
           </div>
-          
-          <button 
-            type="submit" 
-            className="issue-token-btn" 
-            style={{ width: '100%', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1 }}
-            disabled={loading}
-          >
-            {loading ? 'Authenticating...' : 'Login'}
+
+          <button className="staff-login-submit" type="submit" disabled={loading}>
+            {loading ? 'Authenticating…' : 'Login'}
           </button>
         </form>
-        <div style={{ marginTop: '16px', textAlign: 'center' }}>
-          <button 
-            type="button"
-            onClick={() => navigate('/reception')}
-            style={{ background: 'none', border: 'none', color: 'var(--color-primary)', cursor: 'pointer', fontSize: '14px', textDecoration: 'underline' }}
-          >
-            Return to Reception
+
+        <div className="staff-login-foot">
+          <button className="staff-login-link" type="button" onClick={() => navigate('/queue')}>
+            Go to queue
+          </button>
+          <button className="staff-login-link" type="button" onClick={() => navigate('/receptionist')}>
+            Reception dashboard
           </button>
         </div>
       </div>
